@@ -17,12 +17,12 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Product", href: "#product" },
-    { name: "Career", href: "#career" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/", isRoute: true },
+    { name: "About", href: "#about", isRoute: false },
+    { name: "Services", href: "#services", isRoute: false },
+    { name: "Product", href: "#product", isRoute: false },
+    { name: "Career", href: "#career", isRoute: false },
+    { name: "Contact", href: "/contact", isRoute: true },
   ];
 
   return (
@@ -46,17 +46,29 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                isScrolled ? "text-gray-600" : "text-gray-200 hover:text-white"
-              }`}
-            >
-              {link.name}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.isRoute ? (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`text-sm font-medium transition-colors hover:text-primary ${
+                  isScrolled ? "text-gray-600" : "text-gray-200 hover:text-white"
+                }`}
+              >
+                {link.name}
+              </Link>
+            ) : (
+              <a
+                key={link.name}
+                href={link.href}
+                className={`text-sm font-medium transition-colors hover:text-primary ${
+                  isScrolled ? "text-gray-600" : "text-gray-200 hover:text-white"
+                }`}
+              >
+                {link.name}
+              </a>
+            )
+          )}
           <Button 
             className="rounded-full px-6 shadow-sm hover:shadow-md transition-shadow"
             data-testid="button-work-with-us"
@@ -89,16 +101,27 @@ export default function Navbar() {
             className="absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-lg md:hidden overflow-hidden"
           >
             <div className="flex flex-col px-6 py-4 gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-gray-800 font-medium py-2 border-b border-gray-100 last:border-0"
-                >
-                  {link.name}
-                </a>
-              ))}
+              {navLinks.map((link) =>
+                link.isRoute ? (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-gray-800 font-medium py-2 border-b border-gray-100 last:border-0"
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-gray-800 font-medium py-2 border-b border-gray-100 last:border-0"
+                  >
+                    {link.name}
+                  </a>
+                )
+              )}
               <Button className="w-full rounded-full mt-2" data-testid="button-mobile-work">
                 WORK WITH US
               </Button>
