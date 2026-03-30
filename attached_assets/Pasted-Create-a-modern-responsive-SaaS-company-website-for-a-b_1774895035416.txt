@@ -1,0 +1,196 @@
+Create a modern, responsive SaaS company website for a brand named "Codevax".
+
+IMPORTANT:
+- The design must closely match a premium SaaS website similar to FATbit style
+- Follow a clean, minimal, professional UI with proper spacing, shadows, and typography
+- Pixel-perfect alignment, smooth sections, and modern UX
+- Use React (preferred) or HTML + CSS + JS
+- Fully responsive (desktop + mobile)
+
+--------------------------------------------------
+
+🎨 DESIGN SYSTEM:
+
+- Background: White + light gray sections
+- Primary color: Teal / Cyan (#1abc9c or similar)
+- Text: Dark gray / black
+- Buttons: Rounded corners, teal background
+- Cards: Soft shadow, border-radius, clean spacing
+- Font: Modern sans-serif (Poppins / Inter)
+
+--------------------------------------------------
+
+🧭 HEADER / NAVBAR:
+
+- Left: Logo "Codevax" (use provided logo)
+- Right menu:
+  Home | About | Services | Product | Career | Contact
+- CTA button: "WORK WITH US" (teal button)
+- Sticky navbar
+
+--------------------------------------------------
+
+🔥 HERO SECTION:
+
+- Background: blurred office/workspace image
+- Left content:
+  Heading: "Helping You Build Inner Resilience."
+  Paragraph:
+  "At Codevax, we transform your vision into reality with our custom development solutions. Specializing in industry-standard SaaS applications, bespoke mobile app development, and strategic marketing services, we provide the tools and expertise your business needs to thrive."
+
+- CTA button: "LET'S TALK !!"
+
+- Bottom row logos:
+  AWS, Google Analytics, Google Ads, Meta, HTML, CSS, JS
+
+--------------------------------------------------
+
+💡 OUR PRINCIPLES SECTION:
+
+Title:
+"OUR PRINCIPLES"
+"We Architect Perfection !!"
+
+4 Cards (2x2 grid):
+1. Build Trust
+2. Deliver Perfection
+3. Be Transparent
+4. Drive Innovation
+
+Each card:
+- Title
+- Short paragraph
+- Soft shadow
+- Hover effect
+
+--------------------------------------------------
+
+🏢 INDUSTRIES SECTION:
+
+Title:
+"Industries We Serve !!"
+
+Grid (3x3 layout):
+- Rentals
+- Apparels
+- E-learning & Education
+- Travel & Hospitality
+- Real Estate
+- Machinery
+- E-commerce
+- Corporates
+- Logistics
+
+Each:
+- Background image
+- Overlay text centered
+- Hover zoom effect
+
+--------------------------------------------------
+
+👨‍💻 ABOUT SECTION:
+
+Left:
+"We Are Codevax.
+We Help Entrepreneurs Build Their Dreams."
+
+Right:
+Paragraph explaining SaaS + custom solutions
+
+Button:
+"KNOW MORE !!"
+
+--------------------------------------------------
+
+📦 PRE-PACKAGED SOLUTIONS:
+
+Title:
+"Pre-packaged software solutions."
+
+Description:
+"We employ an agile model to accelerate time to value..."
+
+Grid:
+- 8 cards
+- Each with icon placeholder + text
+
+--------------------------------------------------
+
+🛠 SERVICES SECTION:
+
+Title:
+"Main Services"
+
+4 Columns:
+1. One-on-one / CEO Coaching
+2. Business Coaching
+3. Management Coaching
+4. Workshops & Seminars
+
+Each:
+- Number (01, 02...)
+- Title
+- Description
+- "GET STARTED NOW →"
+
+Dark background section
+
+--------------------------------------------------
+
+🌍 STATS / AUTHORITY SECTION:
+
+Title:
+"Stamping Authority At The Global Stage"
+
+Stats:
+- 5000+
+- 200+
+- 18+
+- 22+
+
+Right side:
+Logos:
+Clutch, GoodFirms, DesignRush, Trustpilot
+
+--------------------------------------------------
+
+📞 FOOTER:
+
+Left:
+Logo + description:
+"For Startups, SMBs, and Large corporations..."
+
+Middle:
+Services links
+
+Right:
+Contact info:
+"1025, 10th Floor, Block-D, CCC Building, Punjab, India"
+
+Button:
+"CONTACT US"
+
+Bottom:
+© 2026 Codevax
+
+--------------------------------------------------
+
+⚙️ EXTRA REQUIREMENTS:
+
+- Smooth scrolling
+- Hover animations
+- Button transitions
+- Clean spacing like premium SaaS sites
+- Mobile responsive navbar (hamburger)
+- Section padding consistent
+- Use reusable components (if React)
+
+--------------------------------------------------
+
+🎯 GOAL:
+
+The website should look like a high-end SaaS company (similar to FATbit), clean, modern, and production-ready.
+
+DO NOT make it generic.
+Match layout, spacing, and UI as described.
+Focus heavily on UI/UX quality.
