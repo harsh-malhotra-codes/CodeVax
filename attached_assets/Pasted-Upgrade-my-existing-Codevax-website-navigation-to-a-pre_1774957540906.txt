@@ -1,0 +1,136 @@
+Upgrade my existing "Codevax" website navigation to a premium FATbit-style full-screen mega menu.
+
+IMPORTANT:
+- When user clicks "Services" in navbar → open a FULL-SCREEN OVERLAY MENU
+- Design should match FATbit style: clean, minimal, white background, large typography, structured columns
+- Smooth animation (fade/slide)
+
+--------------------------------------------------
+
+🎯 OVERLAY MENU STRUCTURE:
+
+LEFT SIDE (Navigation Links - large text):
+- Products >
+- Services > (highlighted / active)
+- Hire Developers
+- Work
+- Insights
+- Codevax >
+
+Bottom left:
+- "Contact Us" (bold with underline accent)
+
+--------------------------------------------------
+
+RIGHT SIDE (MULTI-COLUMN SERVICES GRID):
+
+Create 3–4 columns like FATbit:
+
+🔹 Development
+- Custom SaaS Development
+- Custom Web Development
+- Mobile App Development
+- Full Stack Development
+- MVP Development
+- Node.js Development
+- React.js Development
+- CMS Development
+
+🔹 Growth
+- Digital Marketing
+- SEO Services
+- PPC Management
+- Social Media Marketing
+
+🔹 Design
+- UI/UX Design
+- Website Design
+- Product Design
+
+🔹 Consultancy
+- Business Strategy
+- Go-To-Market Strategy
+- Startup Consulting
+
+--------------------------------------------------
+
+✨ DESIGN REQUIREMENTS:
+
+- Full-screen white background
+- Section headings in bold with small accent line (teal color)
+- Text links clean and spaced
+- Hover effect:
+  → text color changes to teal
+  → slight underline or arrow
+- Close button (X) on top right
+- Optional search icon top right
+
+--------------------------------------------------
+
+⚙️ FUNCTIONALITY:
+
+- Click "Services" → open overlay
+- Click outside or X → close
+- Smooth transitions (0.3s ease)
+- Responsive (mobile → stacked layout)
+
+--------------------------------------------------
+
+📄 CREATE FULL PAGES FOR NAVIGATION:
+
+Generate separate pages/routes:
+
+1. Home (already exists)
+
+2. About Page:
+- Company intro
+- Mission, vision
+- Why choose Codevax
+- Team section
+
+3. Services Page:
+- All services listed properly
+- Sections like Development, Design, Marketing
+- Cards or list layout
+
+4. Product Page:
+- SaaS products showcase
+- Cards with description
+
+5. Career Page:
+- Job openings
+- Company culture
+- Apply button
+
+6. Contact Page:
+- Contact form (name, email, message)
+- Address, phone, email
+- Google Maps embed
+
+--------------------------------------------------
+
+🎨 UI CONSISTENCY:
+
+- Use same color theme (teal + white + dark text)
+- Same font (Poppins / Inter)
+- Same spacing system
+- Reusable components
+
+--------------------------------------------------
+
+📱 RESPONSIVENESS:
+
+- Mobile menu becomes hamburger
+- Overlay becomes vertical list
+- Keep UX smooth
+
+--------------------------------------------------
+
+🎯 FINAL GOAL:
+
+The navigation + services menu should feel exactly like a premium SaaS website (FATbit style), not basic dropdown.
+
+Focus on:
+- Clean layout
+- Smooth UX
+- Professional look
