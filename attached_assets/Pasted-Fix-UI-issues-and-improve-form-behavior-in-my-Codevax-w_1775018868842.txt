@@ -1,0 +1,91 @@
+Fix UI issues and improve form behavior in my Codevax website.
+
+IMPORTANT:
+Do not break existing design. Only fix and improve.
+
+--------------------------------------------------
+
+🔴 ISSUE 1: OVERLAPPING TECH STACK SECTION
+
+Problem:
+The section showing technology icons (HTML, CSS, JavaScript, etc.) is overlapping with the next section.
+
+Fix:
+- Either remove this section completely
+OR
+- Fix spacing so it does NOT overlap
+
+Requirements:
+- Add proper margin-top and margin-bottom between sections
+- Ensure sections are clearly separated
+- No element should visually overlap another
+- Maintain clean SaaS layout spacing
+
+--------------------------------------------------
+
+🖼 ISSUE 2: INDUSTRIES SECTION (MISSING IMAGE)
+
+Problem:
+The "Travel & Hospitality" card has no image (shows blank/gray).
+
+Fix:
+- Add a high-quality image from Unsplash or Pexels
+- Make sure ALL industry cards have images
+
+Image suggestions:
+- Travel → hotel / tourism / travel destination
+- Use consistent image quality and style
+
+Also:
+- Ensure overlay gradient is applied correctly
+- Text remains readable on all images
+
+--------------------------------------------------
+
+📩 ISSUE 3: CONTACT FORM (REMOVE PRE-FILLED VALUES)
+
+Problem:
+Form inputs contain default values like:
+- John Doe
+- john@company.com
+- Phone number
+
+Fix:
+- Remove all default values from inputs
+
+Correct behavior:
+- Inputs should be EMPTY initially
+- Use placeholders only (light gray hint text)
+
+Example:
+
+Correct:
+<input type="text" placeholder="Enter your full name" value="" />
+
+Wrong:
+<input type="text" value="John Doe" />
+
+Apply to all fields:
+- Name
+- Email
+- Phone
+- Subject
+- Message
+
+--------------------------------------------------
+
+✨ EXTRA UI IMPROVEMENTS
+
+- Ensure consistent spacing across all sections
+- Maintain clean alignment
+- Use proper padding (top and bottom)
+- Keep UI minimal and professional
+
+--------------------------------------------------
+
+🎯 FINAL RESULT REQUIRED
+
+- No overlapping sections
+- All industry cards display proper images
+- Contact form is clean (no pre-filled values)
+- Layout looks polished and production-ready

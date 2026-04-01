@@ -20,7 +20,7 @@ const industries = [
   {
     name: "Travel & Hospitality",
     tag: "Tourism",
-    image: "https://images.unsplash.com/photo-1551882547-ff40c4a49ce5?w=900&q=85&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=900&q=85&auto=format&fit=crop",
   },
   {
     name: "Real Estate",

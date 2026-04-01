@@ -187,7 +187,7 @@ export default function Contact() {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        placeholder="John Doe"
+                        placeholder="Enter your full name"
                         data-testid="input-name"
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:border-[#1abc9c] focus:ring-2 focus:ring-[#1abc9c]/20 transition-all"
                       />
@@ -203,7 +203,7 @@ export default function Contact() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="john@company.com"
+                        placeholder="your@email.com"
                         data-testid="input-email"
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:border-[#1abc9c] focus:ring-2 focus:ring-[#1abc9c]/20 transition-all"
                       />
@@ -221,7 +221,7 @@ export default function Contact() {
                         type="tel"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+91 98765 43210"
+                        placeholder="+1 234 567 8900"
                         data-testid="input-phone"
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:border-[#1abc9c] focus:ring-2 focus:ring-[#1abc9c]/20 transition-all"
                       />

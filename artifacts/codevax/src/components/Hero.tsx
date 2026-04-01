@@ -12,14 +12,14 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#0d1b2a] pt-20" id="home">
+    <section className="relative min-h-screen flex flex-col overflow-hidden bg-[#0d1b2a] pt-20" id="home">
       {/* Background Gradient Mesh */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-slate-800 via-[#0d1b2a] to-[#1a1a2e] opacity-90"></div>
       
       {/* Tech Grid overlay subtle */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
 
-      <div className="container relative z-10 mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center gap-12 flex-1 pt-12 pb-24">
+      <div className="container relative z-10 mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center gap-12 flex-1 pt-16 pb-20">
         {/* Left Content */}
         <div className="w-full lg:w-[60%] flex flex-col items-start text-left">
           <motion.div
