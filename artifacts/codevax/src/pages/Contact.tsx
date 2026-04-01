@@ -4,6 +4,8 @@ import { MapPin, Mail, Phone, Send, Clock, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import "@/lib/api";
+import { usePostContactMutation } from "@workspace/api-client-react";
 
 const contactInfo = [
   {
@@ -46,6 +48,9 @@ export default function Contact() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [submitError, setSubmitError] = useState("");
+  const contactMutation = usePostContactMutation();
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -55,7 +60,35 @@ export default function Contact() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitError("");
+    contactMutation.mutate(
+      {
+        data: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || undefined,
+          message: formData.message,
+        },
+      },
+      {
+        onSuccess: (data) => {
+          setSubmitted(true);
+          setSuccessMessage(data.message);
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            subject: "",
+            message: "",
+          });
+        },
+        onError: (error) => {
+          setSubmitError(
+            error instanceof Error ? error.message : "Unable to submit contact form.",
+          );
+        },
+      },
+    );
   }
 
   return (
@@ -164,10 +197,22 @@ export default function Contact() {
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Message Sent!</h3>
                   <p className="text-gray-500 mb-6">
-                    Thank you for reaching out. We'll get back to you within 24 hours.
+                    {successMessage ||
+                      "Thank you for reaching out. We'll get back to you within 24 hours."}
                   </p>
                   <button
-                    onClick={() => { setSubmitted(false); setFormData({ name: "", email: "", phone: "", subject: "", message: "" }); }}
+                    onClick={() => {
+                      setSubmitted(false);
+                      setSuccessMessage("");
+                      setSubmitError("");
+                      setFormData({
+                        name: "",
+                        email: "",
+                        phone: "",
+                        subject: "",
+                        message: "",
+                      });
+                    }}
                     className="text-[#1abc9c] font-semibold hover:underline text-sm"
                   >
                     Send another message
@@ -175,6 +220,11 @@ export default function Contact() {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5" data-testid="contact-form">
+                  {submitError ? (
+                    <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                      {submitError}
+                    </div>
+                  ) : null}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="flex flex-col gap-2">
                       <label className="text-sm font-medium text-gray-700" htmlFor="name">
@@ -267,10 +317,11 @@ export default function Contact() {
                   <Button
                     type="submit"
                     size="lg"
+                    disabled={contactMutation.isPending}
                     className="w-full rounded-xl h-14 text-base font-semibold shadow-lg shadow-[#1abc9c]/20 group"
                     data-testid="button-submit"
                   >
-                    Send Message
+                    {contactMutation.isPending ? "Sending..." : "Send Message"}
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </form>

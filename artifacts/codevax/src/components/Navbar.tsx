@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, Hexagon, ChevronDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 
 /* ─── Mega Menu Data ─────────────────────────────────────────────────── */
 
@@ -62,19 +62,19 @@ const leftLinks = [
 
 /* ─── Animation Variants ─────────────────────────────────────────────── */
 
-const overlayVariants = {
+const overlayVariants: Variants = {
   hidden:  { opacity: 0, y: -16, clipPath: "inset(0 0 100% 0)" },
   visible: { opacity: 1, y: 0,   clipPath: "inset(0 0 0% 0)",
-             transition: { duration: 0.38, ease: [0.22, 1, 0.36, 1] } },
+             transition: { duration: 0.38, ease: [0.22, 1, 0.36, 1] as const } },
   exit:    { opacity: 0, y: -8,  clipPath: "inset(0 0 100% 0)",
-             transition: { duration: 0.28, ease: [0.4, 0, 1, 1] } },
+             transition: { duration: 0.28, ease: [0.4, 0, 1, 1] as const } },
 };
 
-const colVariants = {
+const colVariants: Variants = {
   hidden:  { opacity: 0, y: 18 },
   visible: (i: number) => ({
     opacity: 1, y: 0,
-    transition: { duration: 0.35, delay: 0.12 + i * 0.06, ease: "easeOut" },
+    transition: { duration: 0.35, delay: 0.12 + i * 0.06, ease: [0.16, 1, 0.3, 1] as const },
   }),
 };
 

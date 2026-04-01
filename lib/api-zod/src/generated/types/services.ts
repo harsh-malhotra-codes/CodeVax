@@ -5,22 +5,6 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
-export interface HealthStatus {
-  status: string;
-}
-
-export interface ContactRequest {
-  name: string;
-  email: string;
-  phone?: string;
-  message: string;
-}
-
-export interface ContactResponse {
-  status: string;
-  message: string;
-  submittedAt: string;
-}
 
 export interface ServiceItem {
   title: string;

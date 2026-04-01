@@ -5,6 +5,14 @@ import router from "./routes";
 import { logger } from "./lib/logger";
 
 const app: Express = express();
+const allowedOrigins = new Set(
+  [
+    process.env.FRONTEND_ORIGIN,
+    process.env.CORS_ORIGIN,
+    "http://localhost:5173",
+    "http://localhost:4173",
+  ].filter((value): value is string => Boolean(value)),
+);
 
 app.use(
   pinoHttp({
@@ -25,10 +33,27 @@ app.use(
     },
   }),
 );
-app.use(cors());
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin) {
+        callback(null, true);
+        return;
+      }
+
+      if (allowedOrigins.has(origin)) {
+        callback(null, true);
+        return;
+      }
+
+      callback(new Error(`CORS blocked for origin: ${origin}`));
+    },
+    credentials: true,
+  }),
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api", router);
+app.use(router);
 
 export default app;

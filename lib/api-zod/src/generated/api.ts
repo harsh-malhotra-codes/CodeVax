@@ -14,3 +14,33 @@ import * as zod from "zod";
 export const HealthCheckResponse = zod.object({
   status: zod.string(),
 });
+
+export const ContactRequest = zod.object({
+  name: zod.string().min(1),
+  email: zod.string().email(),
+  phone: zod.string().min(1).optional(),
+  message: zod.string().min(1),
+});
+
+export const ContactResponse = zod.object({
+  status: zod.string(),
+  message: zod.string(),
+  submittedAt: zod.string(),
+});
+
+export const ServiceItem = zod.object({
+  title: zod.string(),
+  desc: zod.string(),
+});
+
+export const ServiceCategory = zod.object({
+  id: zod.string(),
+  label: zod.string(),
+  color: zod.string(),
+  heading: zod.string(),
+  intro: zod.string(),
+  image: zod.string(),
+  services: zod.array(ServiceItem),
+});
+
+export const ServicesResponse = zod.array(ServiceCategory);

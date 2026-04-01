@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import type { Variants } from "framer-motion";
 
 const industries = [
   {
@@ -50,17 +51,17 @@ const industries = [
 ];
 
 /* stagger animation for the grid */
-const container = {
+const container: Variants = {
   hidden: {},
   show: {
     transition: { staggerChildren: 0.07, delayChildren: 0.05 },
   },
 };
 
-const cardVariant = {
+const cardVariant: Variants = {
   hidden: { opacity: 0, y: 28, scale: 0.97 },
   show:   { opacity: 1, y: 0,  scale: 1,
-             transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+             transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 export default function Industries() {

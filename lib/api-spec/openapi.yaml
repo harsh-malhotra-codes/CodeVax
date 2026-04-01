@@ -5,13 +5,17 @@ info:
   version: 0.1.0
   description: API specification
 servers:
-  - url: /api
+  - url: /
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: contact
+    description: Contact operations
+  - name: services
+    description: Services operations
 paths:
-  /healthz:
+  /health:
     get:
       operationId: healthCheck
       tags: [health]
@@ -24,6 +28,40 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /contact:
+    post:
+      operationId: postContact
+      tags: [contact]
+      summary: Submit contact form
+      description: Accepts a contact request from the frontend
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactRequest"
+      responses:
+        "201":
+          description: Submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContactResponse"
+        "400":
+          description: Invalid input
+  /services:
+    get:
+      operationId: getServices
+      tags: [services]
+      summary: Get services catalog
+      description: Returns the service categories used on the services page
+      responses:
+        "200":
+          description: Services list
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServicesResponse"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +71,73 @@ components:
           type: string
       required:
         - status
-
+    ContactRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        message:
+          type: string
+      required:
+        - name
+        - email
+        - message
+    ContactResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        submittedAt:
+          type: string
+      required:
+        - status
+        - message
+        - submittedAt
+    ServiceItem:
+      type: object
+      properties:
+        title:
+          type: string
+        desc:
+          type: string
+      required:
+        - title
+        - desc
+    ServiceCategory:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+        color:
+          type: string
+        heading:
+          type: string
+        intro:
+          type: string
+        image:
+          type: string
+        services:
+          type: array
+          items:
+            $ref: "#/components/schemas/ServiceItem"
+      required:
+        - id
+        - label
+        - color
+        - heading
+        - intro
+        - image
+        - services
+    ServicesResponse:
+      type: array
+      items:
+        $ref: "#/components/schemas/ServiceCategory"

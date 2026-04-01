@@ -5,15 +5,22 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import type {
   QueryFunction,
   QueryKey,
+  UseMutationOptions,
+  UseMutationResult,
   UseQueryOptions,
   UseQueryResult,
 } from "@tanstack/react-query";
 
-import type { HealthStatus } from "./api.schemas";
+import type {
+  ContactRequest,
+  ContactResponse,
+  HealthStatus,
+  ServicesResponse,
+} from "./api.schemas";
 
 import { customFetch } from "../custom-fetch";
 import type { ErrorType } from "../custom-fetch";
@@ -29,7 +36,7 @@ type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
  * @summary Health check
  */
 export const getHealthCheckUrl = () => {
-  return `/api/healthz`;
+  return `/health`;
 };
 
 export const healthCheck = async (
@@ -42,7 +49,7 @@ export const healthCheck = async (
 };
 
 export const getHealthCheckQueryKey = () => {
-  return [`/api/healthz`] as const;
+  return [`/health`] as const;
 };
 
 export const getHealthCheckQueryOptions = <
@@ -93,6 +100,134 @@ export function useHealthCheck<
 }): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getHealthCheckQueryOptions(options);
 
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+export const getContactUrl = () => {
+  return `/contact`;
+};
+
+export const postContact = async (
+  contactRequest: ContactRequest,
+  options?: RequestInit,
+): Promise<ContactResponse> => {
+  return customFetch<ContactResponse>(getContactUrl(), {
+    ...options,
+    method: "POST",
+    body: JSON.stringify(contactRequest),
+  });
+};
+
+export const getPostContactMutationOptions = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof postContact>>,
+    TError,
+    { data: ContactRequest },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { mutation: mutationOptions, request: requestOptions } = options ?? {};
+
+  const mutationFn = async (variables: { data: ContactRequest }) => {
+    return postContact(variables.data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions } as UseMutationOptions<
+    Awaited<ReturnType<typeof postContact>>,
+    TError,
+    { data: ContactRequest },
+    TContext
+  >;
+};
+
+export function usePostContactMutation<
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof postContact>>,
+    TError,
+    { data: ContactRequest },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof postContact>>,
+  TError,
+  { data: ContactRequest },
+  TContext
+> {
+  const mutationOptions = getPostContactMutationOptions(options);
+  const mutation = useMutation(mutationOptions) as UseMutationResult<
+    Awaited<ReturnType<typeof postContact>>,
+    TError,
+    { data: ContactRequest },
+    TContext
+  >;
+
+  return mutation;
+}
+
+export const getServicesUrl = () => {
+  return `/services`;
+};
+
+export const getServices = async (
+  options?: RequestInit,
+): Promise<ServicesResponse> => {
+  return customFetch<ServicesResponse>(getServicesUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getServicesQueryKey = () => {
+  return [`/services`] as const;
+};
+
+export const getServicesQueryOptions = <
+  TData = Awaited<ReturnType<typeof getServices>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<Awaited<ReturnType<typeof getServices>>, TError, TData>;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getServicesQueryKey();
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getServices>>> = ({
+    signal,
+  }) => getServices({ signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof getServices>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ServicesQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getServices>>
+>;
+export type ServicesQueryError = ErrorType<unknown>;
+
+export function useServices<
+  TData = Awaited<ReturnType<typeof getServices>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<Awaited<ReturnType<typeof getServices>>, TError, TData>;
+  request?: SecondParameter<typeof customFetch>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getServicesQueryOptions(options);
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
     queryKey: QueryKey;
   };
