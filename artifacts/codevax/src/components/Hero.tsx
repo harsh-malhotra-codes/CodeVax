@@ -103,7 +103,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <Button size="lg" className="learn-more min-w-[12rem] h-14 px-6 text-base shadow-lg shadow-primary/20">
+            <Button size="lg" className="learn-more text-white min-w-[12rem] h-14 px-6 text-base shadow-lg shadow-primary/20">
               LET'S TALK !!
             </Button>
           </motion.div>

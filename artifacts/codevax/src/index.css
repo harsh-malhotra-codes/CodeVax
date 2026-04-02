@@ -407,7 +407,9 @@
 
   .learn-more {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
     cursor: pointer;
     outline: none;
     border: 0;
@@ -418,17 +420,24 @@
     font-size: inherit;
     font-family: inherit;
     overflow: hidden;
+    white-space: nowrap;
+    padding-left: 0.15rem;
+    color: currentColor;
   }
 
   .learn-more .circle {
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
     position: relative;
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     margin: 0;
     width: 3rem;
     height: 3rem;
     background: #081826;
     border-radius: 1.625rem;
+    z-index: 2;
+    flex-shrink: 0;
   }
 
   .learn-more .icon {
@@ -461,18 +470,18 @@
 
   .learn-more .button-text {
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-    position: absolute;
-    inset: 0;
-    padding: 0.75rem 0;
-    margin-left: 1.85rem;
-    color: #081826;
+    position: relative;
+    z-index: 1;
+    padding: 0.75rem 0.5rem 0.75rem 0;
+    margin-left: 0.35rem;
+    color: currentColor;
     font-weight: 700;
     line-height: 1.6;
-    text-align: center;
+    text-align: left;
     text-transform: uppercase;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0.5rem;
   }
 
