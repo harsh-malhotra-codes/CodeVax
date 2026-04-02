@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Mail, Phone, Send, Clock, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -30,15 +30,6 @@ const contactInfo = [
   },
 ];
 
-const subjects = [
-  "Custom SaaS Development",
-  "Mobile App Development",
-  "Digital Marketing",
-  "UI/UX Design",
-  "Cloud Consulting",
-  "General Inquiry",
-];
-
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -47,10 +38,29 @@ export default function Contact() {
     subject: "",
     message: "",
   });
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [submitError, setSubmitError] = useState("");
   const contactMutation = usePostContactMutation();
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    try {
+      const savedServices = window.localStorage.getItem("codevax_selected_services");
+      const savedSubject = window.localStorage.getItem("codevax_contact_subject");
+      const parsedServices = savedServices ? (JSON.parse(savedServices) as string[]) : [];
+
+      setSelectedServices(Array.isArray(parsedServices) ? parsedServices : []);
+      setFormData((prev) => ({
+        ...prev,
+        subject: savedSubject || prev.subject,
+      }));
+    } catch {
+      // Ignore malformed localStorage payloads and keep the form editable.
+    }
+  }, []);
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -98,7 +108,7 @@ export default function Contact() {
       {/* Page Hero */}
       <section className="relative pt-32 pb-20 bg-[#0d1b2a] overflow-hidden">
         {/* Background decoration */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_#1abc9c22_0%,_transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_#18c8d022_0%,_transparent_60%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_#1a1a2e_0%,_transparent_70%)]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-white/5 border-dashed" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full border border-white/[0.03] border-dashed" />
@@ -108,7 +118,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-block text-[#1abc9c] uppercase tracking-[0.25em] font-semibold text-sm mb-5"
+            className="inline-block text-[#18c8d0] uppercase tracking-[0.25em] font-semibold text-sm mb-5"
           >
             Get In Touch
           </motion.span>
@@ -119,7 +129,7 @@ export default function Contact() {
             className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight"
           >
             Let's Build Something{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1abc9c] to-[#3498db]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#18c8d0] to-[#18c8d0]">
               Great Together
             </span>
           </motion.h1>
@@ -145,11 +155,11 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-white rounded-2xl p-7 shadow-[0_4px_30px_rgba(0,0,0,0.08)] border border-gray-100 group hover:border-[#1abc9c]/30 hover:shadow-[0_8px_40px_rgba(26,188,156,0.12)] transition-all duration-300"
+                className="bg-white rounded-2xl p-7 shadow-[0_4px_30px_rgba(0,0,0,0.08)] border border-gray-100 group hover:border-[#18c8d0]/30 hover:shadow-[0_8px_40px_rgba(24,200,208,0.12)] transition-all duration-300"
                 data-testid={`contact-info-card-${i}`}
               >
-                <div className="w-12 h-12 rounded-xl bg-[#1abc9c]/10 flex items-center justify-center mb-5 group-hover:bg-[#1abc9c] transition-colors duration-300">
-                  <item.icon className="w-5 h-5 text-[#1abc9c] group-hover:text-white transition-colors duration-300" />
+                <div className="w-12 h-12 rounded-xl bg-[#18c8d0]/10 flex items-center justify-center mb-5 group-hover:bg-[#18c8d0] transition-colors duration-300">
+                  <item.icon className="w-5 h-5 text-[#18c8d0] group-hover:text-white transition-colors duration-300" />
                 </div>
                 <h3 className="text-gray-900 font-bold text-base mb-3">{item.title}</h3>
                 {item.lines.map((line, j) => (
@@ -175,7 +185,7 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-[#1abc9c] uppercase tracking-[0.2em] font-semibold text-xs mb-3 block">
+              <span className="text-[#18c8d0] uppercase tracking-[0.2em] font-semibold text-xs mb-3 block">
                 Send a Message
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
@@ -189,10 +199,10 @@ export default function Contact() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-[#1abc9c]/10 border border-[#1abc9c]/30 rounded-2xl p-10 text-center"
+                  className="bg-[#18c8d0]/10 border border-[#18c8d0]/30 rounded-2xl p-10 text-center"
                   data-testid="form-success"
                 >
-                  <div className="w-16 h-16 rounded-full bg-[#1abc9c] flex items-center justify-center mx-auto mb-5">
+                  <div className="w-16 h-16 rounded-full bg-[#18c8d0] flex items-center justify-center mx-auto mb-5">
                     <Send className="w-7 h-7 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Message Sent!</h3>
@@ -213,7 +223,7 @@ export default function Contact() {
                         message: "",
                       });
                     }}
-                    className="text-[#1abc9c] font-semibold hover:underline text-sm"
+                    className="text-[#18c8d0] font-semibold hover:underline text-sm"
                   >
                     Send another message
                   </button>
@@ -228,7 +238,7 @@ export default function Contact() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="flex flex-col gap-2">
                       <label className="text-sm font-medium text-gray-700" htmlFor="name">
-                        Full Name <span className="text-[#1abc9c]">*</span>
+                        Full Name <span className="text-[#18c8d0]">*</span>
                       </label>
                       <input
                         id="name"
@@ -239,12 +249,12 @@ export default function Contact() {
                         onChange={handleChange}
                         placeholder="Enter your full name"
                         data-testid="input-name"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:border-[#1abc9c] focus:ring-2 focus:ring-[#1abc9c]/20 transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:border-[#18c8d0] focus:ring-2 focus:ring-[#18c8d0]/20 transition-all"
                       />
                     </div>
                     <div className="flex flex-col gap-2">
                       <label className="text-sm font-medium text-gray-700" htmlFor="email">
-                        Email Address <span className="text-[#1abc9c]">*</span>
+                        Email Address <span className="text-[#18c8d0]">*</span>
                       </label>
                       <input
                         id="email"
@@ -255,7 +265,7 @@ export default function Contact() {
                         onChange={handleChange}
                         placeholder="your@email.com"
                         data-testid="input-email"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:border-[#1abc9c] focus:ring-2 focus:ring-[#1abc9c]/20 transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:border-[#18c8d0] focus:ring-2 focus:ring-[#18c8d0]/20 transition-all"
                       />
                     </div>
                   </div>
@@ -273,33 +283,30 @@ export default function Contact() {
                         onChange={handleChange}
                         placeholder="+1 234 567 8900"
                         data-testid="input-phone"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:border-[#1abc9c] focus:ring-2 focus:ring-[#1abc9c]/20 transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:border-[#18c8d0] focus:ring-2 focus:ring-[#18c8d0]/20 transition-all"
                       />
                     </div>
                     <div className="flex flex-col gap-2">
                       <label className="text-sm font-medium text-gray-700" htmlFor="subject">
-                        Subject <span className="text-[#1abc9c]">*</span>
+                        Subject <span className="text-[#18c8d0]">*</span>
                       </label>
-                      <select
+                      <input
                         id="subject"
                         name="subject"
+                        type="text"
                         required
                         value={formData.subject}
                         onChange={handleChange}
-                        data-testid="select-subject"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 text-sm focus:outline-none focus:border-[#1abc9c] focus:ring-2 focus:ring-[#1abc9c]/20 transition-all appearance-none cursor-pointer"
-                      >
-                        <option value="" disabled>Select a service...</option>
-                        {subjects.map((s) => (
-                          <option key={s} value={s}>{s}</option>
-                        ))}
-                      </select>
+                        placeholder={selectedServices.length > 0 ? "Selected services will appear here" : "Enter the subject"}
+                        data-testid="input-subject"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:border-[#18c8d0] focus:ring-2 focus:ring-[#18c8d0]/20 transition-all"
+                      />
                     </div>
                   </div>
 
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-medium text-gray-700" htmlFor="message">
-                      Your Message <span className="text-[#1abc9c]">*</span>
+                      Your Message <span className="text-[#18c8d0]">*</span>
                     </label>
                     <textarea
                       id="message"
@@ -310,7 +317,7 @@ export default function Contact() {
                       onChange={handleChange}
                       placeholder="Tell us about your project, goals, and timeline..."
                       data-testid="textarea-message"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:border-[#1abc9c] focus:ring-2 focus:ring-[#1abc9c]/20 transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:border-[#18c8d0] focus:ring-2 focus:ring-[#18c8d0]/20 transition-all resize-none"
                     />
                   </div>
 
@@ -318,11 +325,10 @@ export default function Contact() {
                     type="submit"
                     size="lg"
                     disabled={contactMutation.isPending}
-                    className="w-full rounded-xl h-14 text-base font-semibold shadow-lg shadow-[#1abc9c]/20 group"
+                    className="learn-more min-w-[12rem] h-14 px-6 text-base font-semibold shadow-lg shadow-[#18c8d0]/20"
                     data-testid="button-submit"
                   >
                     {contactMutation.isPending ? "Sending..." : "Send Message"}
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </form>
               )}
@@ -345,7 +351,7 @@ export default function Contact() {
                 />
                 <div className="absolute inset-0 bg-[#0d1b2a]/50" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-                  <div className="w-14 h-14 rounded-full bg-[#1abc9c] flex items-center justify-center mb-4 shadow-lg shadow-[#1abc9c]/40">
+                  <div className="w-14 h-14 rounded-full bg-[#18c8d0] flex items-center justify-center mb-4 shadow-lg shadow-[#18c8d0]/40">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <p className="text-white font-bold text-lg">CCC Building, Punjab</p>
@@ -365,8 +371,8 @@ export default function Contact() {
                     "End-to-end development & post-launch support",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <span className="mt-0.5 w-5 h-5 rounded-full bg-[#1abc9c]/20 flex items-center justify-center flex-shrink-0">
-                        <span className="w-2 h-2 rounded-full bg-[#1abc9c] block" />
+                      <span className="mt-0.5 w-5 h-5 rounded-full bg-[#18c8d0]/20 flex items-center justify-center flex-shrink-0">
+                        <span className="w-2 h-2 rounded-full bg-[#18c8d0] block" />
                       </span>
                       <span className="text-gray-300 text-sm leading-relaxed">{item}</span>
                     </li>
@@ -398,7 +404,7 @@ export default function Contact() {
             </div>
             <Button
               size="lg"
-              className="rounded-full h-14 px-10 text-base font-semibold whitespace-nowrap shadow-lg shadow-[#1abc9c]/30 group flex-shrink-0"
+              className="rounded-full h-14 px-10 text-base font-semibold whitespace-nowrap shadow-lg shadow-[#18c8d0]/30 group flex-shrink-0"
               data-testid="button-cta-banner"
             >
               LET'S TALK !!

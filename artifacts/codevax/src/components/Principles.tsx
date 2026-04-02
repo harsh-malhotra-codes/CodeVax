@@ -57,7 +57,7 @@ export default function Principles() {
         </div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -65,9 +65,9 @@ export default function Principles() {
         >
           {principles.map((principle, index) => (
             <motion.div key={index} variants={cardVariants}>
-              <Card className="h-full border-0 shadow-[0_4px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.12)] transition-all duration-300 group overflow-hidden relative">
+              <Card className="h-full min-h-[260px] border-0 shadow-[0_4px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.12)] transition-all duration-300 group overflow-hidden relative">
                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary transform origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out"></div>
-                <CardContent className="p-8 flex flex-col items-start gap-6">
+                <CardContent className="p-10 flex flex-col items-start gap-6">
                   <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                     <principle.icon className="w-7 h-7" />
                   </div>

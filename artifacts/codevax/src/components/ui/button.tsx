@@ -51,11 +51,27 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
+    const isLearnMore = typeof className === "string" && className.includes("learn-more")
+    const content = isLearnMore ? (
+      <>
+        <span className="circle" aria-hidden="true">
+          <span className="icon arrow" />
+        </span>
+        <span className="button-text">{props.children}</span>
+      </>
+    ) : (
+      props.children
+    )
+    const rootClassName = isLearnMore
+      ? cn("learn-more", className)
+      : cn(buttonVariants({ variant, size, className }))
+
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={rootClassName}
         ref={ref}
         {...props}
+        children={content}
       />
     )
   }

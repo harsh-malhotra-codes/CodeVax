@@ -39,7 +39,7 @@ const products = [
     tag: "Travel",
     desc: "End-to-end travel booking solution covering flights, hotels, and tours with dynamic pricing and CRM integration.",
     features: ["Flight & hotel aggregation", "Dynamic pricing engine", "B2B & B2C portals", "Loyalty rewards module"],
-    image: "https://images.unsplash.com/photo-1551882547-ff40c4a49ce5?w=800&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80&auto=format&fit=crop",
     badge: null,
   },
   {
@@ -76,7 +76,7 @@ export default function Product() {
 
       {/* Hero */}
       <section className="relative pt-36 pb-24 bg-[#0d1b2a] overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_#1abc9c18_0%,_transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_#18c8d018_0%,_transparent_55%)]" />
         <div className="absolute -bottom-1 left-0 right-0">
           <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 80H1440V20C1200 70 960 0 720 40C480 80 240 0 0 30V80Z" fill="white" />
@@ -87,7 +87,7 @@ export default function Product() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-block text-[#1abc9c] uppercase tracking-[0.25em] font-semibold text-sm mb-5"
+            className="inline-block text-[#18c8d0] uppercase tracking-[0.25em] font-semibold text-sm mb-5"
           >
             Ready-Made Solutions
           </motion.span>
@@ -99,7 +99,7 @@ export default function Product() {
           >
             Pre-Packaged SaaS Products
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1abc9c] to-[#3498db]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#18c8d0] to-[#18c8d0]">
               Ready to Deploy
             </span>
           </motion.h1>
@@ -126,7 +126,7 @@ export default function Product() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
               >
-                <p className="text-3xl font-black text-[#1abc9c] mb-1">{s.value}</p>
+                <p className="text-3xl font-black text-[#18c8d0] mb-1">{s.value}</p>
                 <p className="text-sm text-gray-500">{s.label}</p>
               </motion.div>
             ))}
@@ -138,7 +138,7 @@ export default function Product() {
       <section className="py-24 bg-[#f8f9fa]">
         <div className="container mx-auto px-6 md:px-12">
           <div className="text-center mb-16">
-            <span className="text-[#1abc9c] uppercase tracking-[0.2em] font-semibold text-xs mb-3 block">Our Portfolio</span>
+            <span className="text-[#18c8d0] uppercase tracking-[0.2em] font-semibold text-xs mb-3 block">Our Portfolio</span>
             <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Industry-Specific Platforms</h2>
             <p className="text-gray-500 text-lg max-w-xl mx-auto">
               Each product is production-ready, white-label-friendly, and backed by our full support team.
@@ -153,7 +153,7 @@ export default function Product() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group bg-white rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.07)] border border-gray-100 hover:shadow-[0_12px_48px_rgba(26,188,156,0.13)] hover:border-[#1abc9c]/20 transition-all duration-400 flex flex-col"
+                className="group bg-white rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.07)] border border-gray-100 hover:shadow-[0_12px_48px_rgba(24,200,208,0.13)] hover:border-[#18c8d0]/20 transition-all duration-400 flex flex-col"
                 data-testid={`product-card-${i}`}
               >
                 {/* Image */}
@@ -165,7 +165,7 @@ export default function Product() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                   <div className="absolute top-4 left-4 flex gap-2">
-                    <span className="bg-[#1abc9c] text-white text-xs font-bold px-3 py-1 rounded-full">{product.tag}</span>
+                    <span className="bg-[#18c8d0] text-white text-xs font-bold px-3 py-1 rounded-full">{product.tag}</span>
                     {product.badge && (
                       <span className="bg-white text-gray-900 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
                         <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
@@ -178,8 +178,8 @@ export default function Product() {
                 {/* Content */}
                 <div className="p-7 flex flex-col flex-1">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-[#1abc9c]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#1abc9c] transition-colors duration-300">
-                      <product.icon className="w-5 h-5 text-[#1abc9c] group-hover:text-white transition-colors duration-300" />
+                    <div className="w-10 h-10 rounded-xl bg-[#18c8d0]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#18c8d0] transition-colors duration-300">
+                      <product.icon className="w-5 h-5 text-[#18c8d0] group-hover:text-white transition-colors duration-300" />
                     </div>
                     <h3 className="font-bold text-gray-900 text-lg leading-tight">{product.title}</h3>
                   </div>
@@ -189,7 +189,7 @@ export default function Product() {
                   <ul className="space-y-2 mb-7 flex-1">
                     {product.features.map((f, fi) => (
                       <li key={fi} className="flex items-center gap-2 text-xs text-gray-600">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#1abc9c] flex-shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#18c8d0] flex-shrink-0" />
                         {f}
                       </li>
                     ))}
@@ -198,10 +198,9 @@ export default function Product() {
                   <Link href="/contact">
                     <Button
                       variant="outline"
-                      className="w-full rounded-xl border-[#1abc9c]/30 text-[#1abc9c] hover:bg-[#1abc9c] hover:text-white hover:border-[#1abc9c] transition-all group/btn"
+                      className="learn-more min-w-[12rem] h-12 px-6 transition-all"
                     >
                       Request Demo
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
                 </div>
@@ -228,12 +227,19 @@ export default function Product() {
               </p>
             </div>
             <Link href="/contact">
-              <Button className="rounded-full h-14 px-10 text-base font-semibold bg-[#1abc9c] hover:bg-[#16a085] text-white border-0 whitespace-nowrap group flex-shrink-0">
+              <Button className="learn-more min-w-[14rem] h-14 px-6 text-base font-semibold whitespace-nowrap flex-shrink-0">
                 Discuss Your Project
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
           </motion.div>
+
+          <div className="mt-12 flex justify-center">
+            <Link href="/product">
+              <Button className="learn-more min-w-[12rem] h-14 px-6 text-base font-semibold shadow-lg shadow-[#18c8d0]/20">
+                More Products
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 

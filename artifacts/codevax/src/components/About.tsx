@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 
 export default function About() {
   return (
@@ -43,10 +42,9 @@ export default function About() {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 h-14 text-base font-semibold group"
+                className="learn-more min-w-[12rem] h-14 px-6 text-base font-semibold"
               >
                 KNOW MORE !!
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
           </motion.div>

@@ -76,7 +76,7 @@ export default function Industries() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="inline-block text-[#1abc9c] uppercase tracking-[0.25em] font-semibold text-sm mb-4"
+            className="inline-block text-[#18c8d0] uppercase tracking-[0.25em] font-semibold text-sm mb-4"
           >
             What We Cover
           </motion.span>
@@ -94,7 +94,7 @@ export default function Industries() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.18 }}
-            className="w-16 h-[3px] bg-[#1abc9c] mx-auto mt-5 origin-left"
+            className="w-16 h-[3px] bg-[#18c8d0] mx-auto mt-5 origin-left"
           />
         </div>
 
@@ -127,7 +127,7 @@ export default function Industries() {
 
               {/* ── Tag pill (top-left) ── */}
               <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
-                <span className="text-[11px] font-bold uppercase tracking-widest bg-[#1abc9c] text-white px-3 py-1 rounded-full">
+                <span className="text-[11px] font-bold uppercase tracking-widest bg-[#18c8d0] text-white px-3 py-1 rounded-full">
                   {ind.tag}
                 </span>
               </div>
@@ -142,17 +142,17 @@ export default function Industries() {
                 {/* Explore link — slides up on hover */}
                 <div className="overflow-hidden h-0 group-hover:h-7 transition-all duration-300">
                   <div className="flex items-center gap-1.5 mt-2">
-                    <span className="text-[#1abc9c] text-[13px] font-semibold">Explore</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#1abc9c] group-hover:translate-x-1 transition-transform duration-300" />
+                    <span className="text-[#18c8d0] text-[13px] font-semibold">Explore</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#18c8d0] group-hover:translate-x-1 transition-transform duration-300" />
                   </div>
                 </div>
               </div>
 
               {/* ── Teal bottom accent ── */}
-              <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#1abc9c] to-[#3498db] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+              <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#18c8d0] to-[#18c8d0] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
 
               {/* ── Corner glow on hover ── */}
-              <div className="absolute bottom-0 left-0 w-32 h-32 rounded-full bg-[#1abc9c]/15 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -translate-x-1/2 translate-y-1/2" />
+              <div className="absolute bottom-0 left-0 w-32 h-32 rounded-full bg-[#18c8d0]/15 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -translate-x-1/2 translate-y-1/2" />
             </motion.div>
           ))}
         </motion.div>
